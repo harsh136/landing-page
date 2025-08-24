@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Odyssey VR</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo-wrapper">
+        <img src="assets/svg/logo.svg" alt="Logo" class="logo" />
+      </div>
+      <!-- Hamburger Button (2 lines) -->
+      <button
+        class="hamburger2"
+        aria-label="Open navigation"
+        aria-expanded="false"
+        aria-controls="glass-menu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <!-- Glassmorphism Mobile Menu -->
+      <div id="glass-menu" class="glass-menu" aria-hidden="true">
+        <ul>
+          <li><a href="#home" class="nav-link">HOME</a></li>
+          <li><a href="#about" class="nav-link">ABOUT</a></li>
+          <li><a href="#products" class="nav-link">PRODUCTS</a></li>
+          <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        </ul>
+      </div>
+      <nav class="navbar">
+        <a href="#home" class="nav-link">HOME</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#products" class="nav-link">PRODUCTS</a>
+        <a href="#products" class="nav-link">CONTACT</a>
+        <a href="#contact" class="join-us-btn">
+          JOIN US
+          <span class="join-us-arrow-bg">
+            <img
+              src="assets/svg/arrow-right-up-line.svg"
+              alt="Arrow Up Right"
+              class="join-us-arrow-svg"
+            />
+          </span>
+        </a>
+      </nav>
+      <main class="hero" id="home">
+        <img
+          src="assets/images/FloatingVR.png"
+          alt="Floating man VR"
+          class="hero-bg"
+        />
+        <section class="hero-content">
+          <div>
+            <h1 class="hero-title">
+              Defy Gravity<br />
+              Experience the Future
+            </h1>
+          </div>
+          <div class="hero-desc">
+            <p>
+              Explore new worlds, connect with others, and create unforgettable
+              memories &mdash;<br />
+              all from the comfort of your own space.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <!-- About Section -->
+      <section class="about" id="about">
+        <div class="about-container">
+          <div class="about-content">
+            <h2 class="about-title">About Us</h2>
+            <p class="about-description">
+              Founded in 2024, Odyssey VR is pioneering the next generation of
+              virtual reality experiences. We're dedicated to pushing the
+              boundaries of what's possible in VR, creating immersive worlds
+              that transform how people connect, learn, and play.
+            </p>
+            <p class="about-description">
+              Our mission is to make virtual reality accessible, immersive, and
+              transformative for everyone, everywhere.
+            </p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <div class="stat-value">
+                  <span class="stat-number" data-target="50">0</span>
+                  <span class="stat-plus">+</span>
+                </div>
+                <span class="stat-label">VR Experiences</span>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">
+                  <span class="stat-number" data-target="100">0</span>
+                  <span class="stat-plus">M+</span>
+                </div>
+                <span class="stat-label">Active Users</span>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">
+                  <span class="stat-number" data-target="24">0</span>
+                  <span class="stat-plus">/ 7</span>
+                </div>
+                <span class="stat-label">Support</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <img
+              src="assets/images/Cybernetic-Individual.png"
+              alt="Cybernetic Individual"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
