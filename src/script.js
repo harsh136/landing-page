@@ -1,3 +1,4 @@
+// Mobile Menu Functionality
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.querySelector(".hamburger2");
   const glassMenu = document.getElementById("glass-menu");
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Close menu when any link inside the glass menu is clicked
   glassMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      closeMenu(); // Use the function to ensure consistent closing
+      closeMenu();
     });
   });
 
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       !isClickOnHamburger &&
       glassMenu.classList.contains("open")
     ) {
-      closeMenu(); // Use the function to ensure consistent closing
+      closeMenu();
     }
   });
 
@@ -51,16 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const aboutSection = document.querySelector(".about");
   const statNumbers = document.querySelectorAll(".stat-number");
 
-  // Debug: Check if elements are found
-  console.log("About section found:", aboutSection);
-  console.log("Stat numbers found:", statNumbers.length);
-
   // Function to animate numbers
   function animateNumbers() {
-    console.log("Animating numbers");
     statNumbers.forEach((statNumber) => {
       const target = +statNumber.getAttribute("data-target");
-      console.log("Target value:", target);
       const increment = target / 150;
       let current = 0;
 
@@ -83,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          console.log("About section is visible");
           animateNumbers();
           observer.unobserve(entry.target);
         }
@@ -97,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Start observing the about section
   if (aboutSection) {
     observer.observe(aboutSection);
-    console.log("Started observing about section");
   }
 
   // Fallback: Trigger animation after 3 seconds if it hasn't happened yet
@@ -107,12 +100,12 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     if (!hasAnimated) {
-      console.log("Fallback: Triggering animation manually");
       animateNumbers();
     }
   }, 3000);
 });
 
+// Product Slider Functionality
 document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".slide");
   const thumbnails = document.querySelectorAll(".thumbnail");
@@ -159,4 +152,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Auto-advance slides every 5 seconds
   setInterval(nextSlide, 5000);
+});
+
+// Contact Form Handling
+document.addEventListener("DOMContentLoaded", function() {
+  const contactForm = document.getElementById('contactForm');
+  const popup = document.getElementById('popup');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      // Simple validation
+      if (!name || !email || !message) {
+        showPopup('Please fill in all fields.');
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showPopup('Please enter a valid email address.');
+        return;
+      }
+      
+      // Simulate form submission
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.textContent = 'SENDING...';
+      submitBtn.disabled = true;
+      
+      // Simulate API call
+      setTimeout(() => {
+        // Reset form
+        contactForm.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        // Show success popup
+        showPopup('Thank you for your message! We will get back to you soon.');
+      }, 2000);
+    });
+  }
+
+  // Function to show popup
+  function showPopup(message) {
+    const popupContent = popup.querySelector('p');
+    popupContent.textContent = message;
+    popup.classList.add('show');
+    
+    // Hide popup after 3 seconds
+    setTimeout(() => {
+      popup.classList.remove('show');
+    }, 3000);
+  }
+
+  // Close popup when clicking outside
+  document.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.classList.remove('show');
+    }
+  });
 });
